@@ -1,15 +1,15 @@
 <template>
-  <div class="home">
+  <div class="notfound">
     {{msg}}
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home',
+  name: 'Notfound',
   data () {
     return {
-      msg: '首页'
+      msg: 'Not Found'
     }
   }
 }
@@ -17,7 +17,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .home{
+  .notfound{
     font-size: 0.08rem;
   }
 </style>
