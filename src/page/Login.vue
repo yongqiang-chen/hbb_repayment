@@ -1,6 +1,7 @@
 <template>
   <div class="login">
-    {{msg}}
+    <h1>{{msg}}</h1>
+    <div class="desc">描述</div>
   </div>
 </template>
 
@@ -16,6 +17,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style scoped lang="scss" >
+  
 </style>
