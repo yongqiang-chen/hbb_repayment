@@ -1,5 +1,5 @@
 <template>
-  <div class="register">
+  <div id="register">
     {{msg}}
   </div>
 </template>

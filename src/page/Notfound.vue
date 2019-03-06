@@ -1,5 +1,5 @@
 <template>
-  <div class="notfound">
+  <div id="notfound">
     {{msg}}
   </div>
 </template>
