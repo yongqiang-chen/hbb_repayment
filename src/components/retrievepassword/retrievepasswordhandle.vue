@@ -5,7 +5,7 @@
         <i>
           <img src="@/assets/password.png" alt="">
         </i>
-        <input type="text"  placeholder="请设置6-20位字母加数字登录密码">
+        <input type="password"  placeholder="请设置6-20位字母加数字登录密码">
       </div>
       <div class="button">下一步</div>
     </div>

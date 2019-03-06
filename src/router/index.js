@@ -15,7 +15,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/retrievesuccess'
+      redirect: '/register'
     },
     {
       path: '/login',

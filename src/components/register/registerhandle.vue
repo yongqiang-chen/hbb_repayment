@@ -1,5 +1,5 @@
 <template>
-  <div id="forgetpasswordhandle">
+  <div id="registerhandle">
     <div class="container">
       <div class="form">
         <div class="label">
@@ -21,6 +21,12 @@
             <div class="btn" v-show="!show" >{{count}} s</div>
           </div>
         </div>
+        <div class="label">
+          <i>
+            <img src="@/assets/password.png" alt="">
+          </i>
+          <input type="password"  placeholder="请设置6-20位字母加数字登录密码">
+        </div>
       </div>
       <div class="button">下一步</div>
     </div>
@@ -29,7 +35,7 @@
 
 <script>
 export default {
-  name: 'LoginHandle',
+  name: 'RegisterHandle',
   data () {
     return {
         show: true,
@@ -60,7 +66,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  #forgetpasswordhandle{
+  #registerhandle{
     width: 100%;
     height: auto;
     .container{
