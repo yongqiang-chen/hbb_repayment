@@ -8,6 +8,11 @@ import router from './router'
 import './javascript/rem'
 import './styleSheets/main.css'
 
+//完整引入mint-ui
+import Mint from 'mint-ui';
+import 'mint-ui/lib/style.css';
+Vue.use(Mint);
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

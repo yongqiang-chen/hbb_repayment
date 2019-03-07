@@ -15,7 +15,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/register'
+      redirect: '/home'
+    },
+    {
+      path: '/home',
+      name: 'Home',
+      component: Home
     },
     {
       path: '/login',
