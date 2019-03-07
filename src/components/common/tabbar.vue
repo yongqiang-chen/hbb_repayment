@@ -1,6 +1,6 @@
 <template>
   <div id="tabbar">
-    <mt-tabbar v-model="selected">
+    <mt-tabbar v-model="selected" fixed>
       <mt-tab-item v-for="nav in navs" :id="nav.id" :key="nav.id">
         <img slot="icon" :src="nav.selectedimg" v-if="selected == nav.id">
         <img slot="icon" :src="nav.img" v-else>
@@ -45,13 +45,13 @@ export default {
   },
   watch: {
       $route (e) {
-          console.log(e.name)
-          this.selected = e.name
+          // console.log(e.name)
+          this.selected = e.name;
       },
       selected: function (val, oldVal) {
         // 这里就可以通过 val 的值变更来确定
-        console.log(val)
-        console.log(oldVal)
+        // console.log(val)
+        // console.log(oldVal)
         this.$router.push({
           path: val
         })
