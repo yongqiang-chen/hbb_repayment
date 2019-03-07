@@ -1,5 +1,5 @@
 <template>
-  <div id="home">
+  <div id="lists">
     <div>{{msg}}</div>
    
   </div>
@@ -7,10 +7,10 @@
 
 <script>
 export default {
-  name: 'Home',
+  name: 'Lists',
   data () {
     return {
-      msg: '首页'
+      msg: '列表页'
     }
   },
   components:{

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/page/Home'
+import Index from '@/page/Index'
 import Login from '@/page/Login'
 import Register from '@/page/Register'
 import Notfound from '@/page/Notfound'
@@ -8,6 +8,9 @@ import InputPassword from '@/page/InputPassword'
 import ForgetPassword from '@/page/ForgetPassword'
 import RetrievePassword from '@/page/RetrievePassword'
 import RetrieveSuccess from '@/page/RetrieveSuccess'
+import Home from '@/page/Home'
+import Lists from '@/page/Lists'
+import Mine from '@/page/Mine'
 
 Vue.use(Router)
 
@@ -15,12 +18,30 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/home'
+      redirect: '/index'
     },
     {
-      path: '/home',
-      name: 'Home',
-      component: Home
+      path: '/index',
+      name: 'Index',
+      component: Index,
+      redirect: '/index/Lists',
+      children: [
+        {
+          path: 'home',
+          name: 'Home',
+          component: Home
+        },
+        {
+          path: 'lists',
+          name: 'Lists',
+          component: Lists
+        },
+        {
+          path: 'mine',
+          name: 'Mine',
+          component: Mine
+        }
+      ]
     },
     {
       path: '/login',

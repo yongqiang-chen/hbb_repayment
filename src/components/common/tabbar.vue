@@ -19,30 +19,44 @@ export default {
     return {
         navs:[
             {
-                id:"1",
-                name:"home",
+                id:"Home",
+                name:"Home",
                 title:"首页",
                 selectedimg:require("@/assets/home-selected.png"),
                 img:require("@/assets/home.png")
             },
             {
-                id:"2",
-                name:"list",
+                id:"Lists",
+                name:"Lists",
                 title:"订单",
                 selectedimg:require("@/assets/list-selected.png"),
                 img:require("@/assets/list.png")
             },
             {
-                id:"3",
-                name:"mine",
+                id:"Mine",
+                name:"Mine",
                 title:"我的",
                 selectedimg:require("@/assets/mine-selected.png"),
                 img:require("@/assets/mine.png")
             }
         ],
-        selected:"1"
+        selected:"Lists"
     }
-  }
+  },
+  watch: {
+      $route (e) {
+          console.log(e.name)
+          this.selected = e.name
+      },
+      selected: function (val, oldVal) {
+        // 这里就可以通过 val 的值变更来确定
+        console.log(val)
+        console.log(oldVal)
+        this.$router.push({
+          path: val
+        })
+      }
+    }
 }
 </script>
 

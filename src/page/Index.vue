@@ -1,20 +1,21 @@
 <template>
-  <div id="home">
-    <div>{{msg}}</div>
-   
+  <div id="index">
+    <router-view></router-view>
+    <tabbar></tabbar>
   </div>
 </template>
 
 <script>
+import Tabbar from '@/components/common/tabbar';
 export default {
-  name: 'Home',
+  name: 'Index',
   data () {
     return {
-      msg: '首页'
+      
     }
   },
   components:{
-    
+    Tabbar
   }
 }
 </script>
