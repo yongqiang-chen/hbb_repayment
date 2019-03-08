@@ -1,14 +1,14 @@
 <template>
   <div id="listdetail">
     <head-top :title="this.title"></head-top>
-    <div class="prompt">
+    <div class="prompt" v-if="show">
         <div class="prompt-content">
             <i>
                 <img src="@/assets/lingdang.png" alt="">
             </i>
             温馨提示：开启消息推送，活动不再错过!
         </div>
-        <div class="close">x</div>
+        <div class="close" @click="closehandle">x</div>
     </div>
     <div>{{msg}}</div>
   </div>
@@ -21,11 +21,17 @@ export default {
   data () {
     return {
       title: '订单详情',
-      msg: '订单详情'
+      msg: '订单详情',
+      show: true
     }
   },
   components:{
       HeadTop,
+  },
+  methods:{
+      closehandle(){
+          this.show = false;
+      }
   }
 }
 </script>
