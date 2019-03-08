@@ -13,6 +13,10 @@ import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css';
 Vue.use(Mint);
 
+//引入fastclick,并绑定到body
+import FastClick from 'fastclick'
+FastClick.attach(document.body);
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
