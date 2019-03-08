@@ -24,8 +24,7 @@ export default {
 <style scoped lang="scss">
   #lists{
     width: 100%;
-    height: auto;
-    min-height: 6.65rem;
+    height: 100%;
     background: #eee;
     .title{
       width: 100%;

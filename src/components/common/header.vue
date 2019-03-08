@@ -29,6 +29,7 @@ export default {
 </script>
 <style scoped lang="scss">
   #header{
+    background: #fff;
     .header-content{
       width: 100%;
       height: 0.48rem;

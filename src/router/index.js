@@ -11,6 +11,7 @@ import RetrieveSuccess from '@/page/RetrieveSuccess'
 import Home from '@/page/Home'
 import Lists from '@/page/Lists'
 import Mine from '@/page/Mine'
+import ListDetail from '@/page/ListDetail'
 
 Vue.use(Router)
 
@@ -18,7 +19,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/index'
+      redirect: '/listdetail'
     },
     {
       path: '/index',
@@ -81,6 +82,11 @@ export default new Router({
       path: '/retrievesuccess',
       name: 'RetrieveSuccess',
       component: RetrieveSuccess
+    },
+    {
+      path: '/listdetail',
+      name: 'ListDetail',
+      component: ListDetail
     }
   ]
 })
