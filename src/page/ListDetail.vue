@@ -10,23 +10,28 @@
         </div>
         <div class="close" @click="closehandle">x</div>
     </div>
-    <div>{{msg}}</div>
+    <info></info>
+    <schedule></schedule>
+    <button class="btn-block">关闭</button>
   </div>
 </template>
 
 <script>
 import HeadTop from '@/components/common/header';
+import Info from '@/components/listdetail/info';
+import Schedule from '@/components/listdetail/schedule';
 export default {
   name: 'ListDetail',
   data () {
     return {
       title: '订单详情',
-      msg: '订单详情',
       show: true
     }
   },
   components:{
       HeadTop,
+      Info,
+      Schedule
   },
   methods:{
       closehandle(){
@@ -73,6 +78,10 @@ export default {
               width: 0.12rem;
               height: 0.12rem;
               color: #F63777;
+          }
+          .btn-block{
+              position: fixed;
+              bottom: 5px;
           }
       }
   }
