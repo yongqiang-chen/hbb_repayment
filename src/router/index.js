@@ -12,6 +12,8 @@ import Home from '@/page/Home'
 import Lists from '@/page/Lists'
 import Mine from '@/page/Mine'
 import ListDetail from '@/page/ListDetail'
+import ApplyDelay from '@/page/ApplyDelay'
+import Repayment from '@/page/Repayment'
 
 Vue.use(Router)
 
@@ -19,7 +21,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/listdetail'
+      redirect: '/applydelay'
     },
     {
       path: '/index',
@@ -87,6 +89,16 @@ export default new Router({
       path: '/listdetail',
       name: 'ListDetail',
       component: ListDetail
+    },
+    {
+      path: '/applydelay',
+      name: 'ApplyDelay',
+      component: ApplyDelay
+    },
+    {
+      path: '/repayment',
+      name: 'Repayment',
+      component: Repayment
     }
   ]
 })
