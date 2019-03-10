@@ -33,6 +33,7 @@ export default {
             width: 100%;
             margin-left: 0.18rem;
             margin-top: -0.25rem;
+            background: rgba(250,250,250,1);
             .data{
                 font-size: 0.09rem;
                 font-family:PingFangSC-Regular;

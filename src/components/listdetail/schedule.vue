@@ -34,9 +34,10 @@ export default {
         height: auto;
         min-height: 1rem;
         margin: 0 auto;
+        margin-bottom: 0.8rem;
         background: #fff;
         box-sizing: border-box;
-        padding: 0.15rem 0.135rem 0.3rem 0.135rem;
+        padding: 0.15rem 0.135rem 0.1rem 0.135rem;
         .top{
             width: 100%;
             height: 0.15rem;
