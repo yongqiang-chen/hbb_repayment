@@ -9,6 +9,8 @@
             <schedule-item></schedule-item>
             <schedule-item></schedule-item>
             <schedule-item></schedule-item>
+            <schedule-item></schedule-item>
+            <schedule-item></schedule-item>
         </div>
     </div>
 </template>

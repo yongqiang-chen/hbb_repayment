@@ -1,5 +1,5 @@
 <template>
-  <div id="inputpassword">
+  <div id="inputpassword" class="page">
     <head-top :title="this.title"></head-top>
     <banner :text="this.text"></banner>
     <handle-password></handle-password>

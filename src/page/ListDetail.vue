@@ -1,5 +1,5 @@
 <template>
-  <div id="listdetail">
+  <div id="listdetail" class="page">
     <head-top :title="this.title"></head-top>
     <div class="prompt" v-if="show">
         <div class="prompt-content">

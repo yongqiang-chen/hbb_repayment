@@ -30,6 +30,11 @@ export default {
 <style scoped lang="scss">
   #header{
     background: #fff;
+    width: 100%;
+    height: 0.48rem;
+    position:fixed;
+    top:0;
+    z-index:999;
     .header-content{
       width: 100%;
       height: 0.48rem;

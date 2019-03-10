@@ -1,5 +1,5 @@
 <template>
-  <div id="register">
+  <div id="register" class="page">
     <head-top :title="this.title"></head-top>
     <banner :text="this.text"></banner>
     <register-handle></register-handle>

@@ -26,14 +26,17 @@ export default {
     width: 100%;
     height: 100%;
     background: #eee;
+    padding-top: 0.58rem;
     .title{
       width: 100%;
       height: 0.48rem;
+      position:fixed;
+      top:0;
+      z-index:999;
       background:rgba(255,255,255,1);
       text-align: center;
       line-height: 0.48rem;
       font-size: 0.16rem;
-      margin-bottom: 0.1rem;
     }
   }
 </style>

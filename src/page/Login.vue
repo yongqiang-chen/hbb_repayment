@@ -1,5 +1,5 @@
 <template>
-  <div id="login">
+  <div id="login" class="page">
     <head-top :title="this.title"></head-top>
     <banner :text="this.text"></banner>
     <login-hand></login-hand>
