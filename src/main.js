@@ -13,6 +13,11 @@ import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css';
 Vue.use(Mint);
 
+//完整引入vant ui
+import Vant from 'vant'
+import 'vant/lib/index.css'
+Vue.use(Vant);
+
 //引入fastclick,并绑定到body
 import FastClick from 'fastclick'
 FastClick.attach(document.body);
