@@ -15,6 +15,8 @@ import ListDetail from '@/page/ListDetail'
 import ApplyDelay from '@/page/ApplyDelay'
 import Repayment from '@/page/Repayment'
 import Pay from '@/page/Pay';
+import PaySuccess from '@/page/PaySuccess';
+import PayFailure from '@/page/PayFailure';
 
 Vue.use(Router)
 
@@ -22,7 +24,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/pay'
+      redirect: '/login'
     },
     {
       path: '/index',
@@ -105,6 +107,15 @@ export default new Router({
       path: '/pay',
       name: 'Pay',
       component: Pay
+    },{
+      path: '/paysuccess',
+      name: 'PaySuccess',
+      component: PaySuccess
+    },
+    {
+      path: '/payfailure',
+      name: 'PayFailure',
+      component: PayFailure
     }
   ]
 })

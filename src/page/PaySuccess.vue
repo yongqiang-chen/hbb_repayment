@@ -1,5 +1,5 @@
 <template>
-  <div id="retrievesuccess">
+  <div id="paysuccess">
     <div class="container">
         <div id="header">
             <div class="header-content">
@@ -10,19 +10,19 @@
             </div>
         </div>
     </div>
-    <p>设置登录密码成功！</p>
-    <div class="confirm">确定</div>
+    <p>处理结果有2-3分钟的延迟，请耐心等待...</p>
+    <div class="confirm">完成</div>
+    
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'RetrieveSuccess',
+  name: 'PaySuccess',
   data () {
     return {
-      title: '设置密码',
-      
+      title: '支付',
+     
     }
   },
   components:{
@@ -43,11 +43,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  #retrievesuccess{
-        .container{
+  #paysuccess{
+      width: 100%;
+      height: auto;
+      min-height: 100%;
+      background: #fff;
+      .container{
             width: 100%;
             height: 2.785rem;
-            background: url('../assets/setup-success.png') no-repeat;
+            background: url('../assets/paysuccess.png') no-repeat;
             background-size: 100% 100%;
             #header{
                 .header-content{
@@ -101,6 +105,5 @@ export default {
             color:rgba(255,255,255,1);
             letter-spacing: 1px;
         }
-     
   }
 </style>
