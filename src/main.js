@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import axios from 'axios'
 
 
 import './javascript/rem'
@@ -21,6 +22,9 @@ Vue.use(Vant);
 //引入fastclick,并绑定到body
 import FastClick from 'fastclick'
 FastClick.attach(document.body);
+
+//使用axios 全局绑定
+Vue.prototype.$axios = axios;
 
 Vue.config.productionTip = false
 

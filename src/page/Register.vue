@@ -16,13 +16,20 @@ export default {
   data () {
     return {
       title: '注册',
-      text:"18190568373"
+      text:"",
+      phone:""
     }
   },
   components:{
     HeadTop,
     Banner,
     RegisterHandle
+  },
+  created:function(){
+    const phone = localStorage.getItem("phone");
+    var reg=/(\d{3})\d{4}(\d{4})/;
+    this.text = phone.replace(reg, "$1****$2");
+    this.phone = phone;
   }
 }
 </script>

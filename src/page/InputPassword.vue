@@ -2,7 +2,7 @@
   <div id="inputpassword" class="page">
     <head-top :title="this.title"></head-top>
     <banner :text="this.text"></banner>
-    <handle-password></handle-password>
+    <handle-password :phone="this.phone"></handle-password>
   </div>
 </template>
 
@@ -15,13 +15,20 @@ export default {
   data () {
     return {
       title: '登录',
-      text: "18190568373"
+      text:'',
+      phone: ''
     }
   },
   components:{
     HeadTop,
     Banner,
     HandlePassword
+  },
+  created:function(){
+    const phone = localStorage.getItem("phone");
+    var reg=/(\d{3})\d{4}(\d{4})/;
+    this.text = phone.replace(reg, "$1****$2");
+    this.phone = phone;
   }
 }
 </script>
