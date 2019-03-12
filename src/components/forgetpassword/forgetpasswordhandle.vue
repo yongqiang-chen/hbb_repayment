@@ -6,54 +6,117 @@
           <i>
             <img src="@/assets/proving.png" alt="">
           </i>
-          <input type="text"  placeholder="请输入图形验证码">
-          <div class="remark">
-            <img src="@/assets/picture-code.png" alt="">
+          <input type="text"  placeholder="请输入图形验证码" v-model.trim="captcha" @blur="passhandle">
+          <div class="remark" @click="getcaptcha">
+            <img :src="this.imgUrl" alt="">
           </div>
         </div>
         <div class="label">
           <i>
             <img src="@/assets/code-img.png" alt="">
           </i>
-          <input type="text"  placeholder="请输入验证码">
+          <input type="text" :disabled="this.smsdisabled" placeholder="请输入验证码" v-model.trim="smscaptcha" @blur="decideNextStep">
           <div class="remark">
-            <div class="btn" v-show="show" @click="getCode">点击获取</div>
-            <div class="btn" v-show="!show" >{{count}} s</div>
+            <div class="btn gray" v-if="pass">点击获取</div>
+            <div class="btn pink" v-else v-show="show" @click="getCode">点击获取</div>
+            <div class="btn gray" v-show="!show" >{{count}} s</div>
           </div>
         </div>
       </div>
-      <div class="button">下一步</div>
+      <div class="button gray" v-if="disabled">下一步</div>
+      <div class="button pink" v-else @click="getBackOneHandle">下一步</div>
     </div>
   </div>
 </template>
 
 <script>
+import { Toast } from 'mint-ui';
 export default {
   name: 'LoginHandle',
   data () {
     return {
+        imgUrl: '',
+        captcha: '',
+        smscaptcha: '',
+        pass: true,
         show: true,
+        smsdisabled: true,
         count: '',
         timer: null,
+        disabled: true
     }
   },
+  props:["phone"],
   methods:{
+    // 获取图形验证码
+    getcaptcha(){
+      this.imgUrl = 'http://47.102.119.238:8080/app/captcha.svl?userPhone=' + this.phone + '&d=' + Math.random();
+      this.captcha = '';
+    },
+    //判断是否输入验证码
+    passhandle(){
+      if (this.captcha == "" || !this.captcha ){
+        Toast('请输入图形验证码');
+      }else{
+        this.pass = false;
+      }
+    },
+    // 获取短信验证码
     getCode(){
-        const TIME_COUNT = 60;
-        if (!this.timer) {
-        this.count = TIME_COUNT;
-        this.show = false;
-        this.timer = setInterval(() => {
-        if (this.count > 0 && this.count <= TIME_COUNT) {
-            this.count--;
-            } else {
-            this.show = true;
-            clearInterval(this.timer);
-            this.timer = null;
+        const that = this;
+        this.$axios.post('http://47.102.119.238:8080/sms/app/getSmsCodeCaptcha?userPhone=' + this.phone + '&captcha=' + this.captcha)
+        .then(function (res) {
+          // console.log(res);
+          if(res.status == 200){
+            const data = res.data;
+            if(data.code == "0"){
+              const TIME_COUNT = 60;
+              if (!that.timer) {
+                that.count = TIME_COUNT;
+                that.show = false;
+                that.timer = setInterval(() => {
+                  if (that.count > 0 && that.count <= TIME_COUNT) {
+                    that.count--;
+                    } else {
+                    that.show = true;
+                    clearInterval(that.timer);
+                    that.timer = null;
+                  }
+                }, 1000)
+              }
+              that.smsdisabled = false;
+            }else if(data.code == "-2"){
+              Toast(data.message);
+            }else if(data.code == "-1"){
+              Toast(data.message);
+            }else{
+              Toast("系统出错，请返回重试");
             }
-        }, 1000)
-        }
-    }  
+          }else{
+            Toast(res.statusText);
+          }
+        }).catch(function (err) {
+          Toast(err);
+        });
+    },
+    //判断是否进入下一步
+    decideNextStep(){
+      if(this.smscaptcha != '' && this.smscaptcha ){
+        this.disabled = false;
+      }else{
+        this.disabled = true;
+      }
+    },  
+    getBackOneHandle(){
+      this.$axios.post('http://47.102.119.238:8080/borrowUser/getBackOne?userPhone=' + this.phone + '&smsCode=' + this.smscaptcha).then(function(res){
+        console.log(res)
+      }).catch(function(err){
+        Toast(err)
+      })
+    }
+  },
+  created: function(){
+    this.getcaptcha()
   }
 }
 </script>
@@ -113,17 +176,21 @@ export default {
               color:rgba(255,255,255,1);
               text-align: center;
               line-height:0.26rem;
-              background:linear-gradient(-90deg,rgba(246,54,118,1),rgba(241,80,132,1));
               border-radius:0.02rem;
             }
           }
         }
       }
+      .gray{
+        background:rgba(204,204,204,1);
+      }
+      .pink{
+        background:linear-gradient(-90deg,rgba(246,54,118,1),rgba(241,80,132,1));
+      }
       .button{
         width: 100%;
         height:0.4rem;
         text-align: center;
-        background:rgba(204,204,204,1);
         border-radius:0.04rem;
         margin-top: 0.43rem;
         font-size: 0.16rem;

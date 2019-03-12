@@ -2,7 +2,7 @@
   <div id="register" class="page">
     <head-top :title="this.title"></head-top>
     <banner :text="this.text"></banner>
-    <register-handle></register-handle>
+    <register-handle :phone="this.phone"></register-handle>
   </div>
 </template>
 
