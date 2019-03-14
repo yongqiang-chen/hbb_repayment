@@ -5,7 +5,7 @@
         <i>
           <img src="@/assets/password.png" alt="">
         </i>
-        <input type="password" class="password" placeholder="请输入登录密码" v-model="password" @blur="switchhandle">
+        <input type="password" class="password" placeholder="请输入登录密码" v-model.trim="password" @blur="switchhandle">
       </div>
       <div class="button gray" v-if="!show">登录</div>
       <div class="button pink" v-if="show" @click="loginrequesthandle">登录</div>

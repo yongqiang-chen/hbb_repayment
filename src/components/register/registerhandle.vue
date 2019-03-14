@@ -6,7 +6,7 @@
           <i>
             <img src="@/assets/proving.png" alt="">
           </i>
-          <input type="text"  placeholder="请输入图形验证码" v-model="captcha" @blur="passhandle">
+          <input type="text"  placeholder="请输入图形验证码" v-model.trim="captcha" @blur="passhandle">
           <div class="remark" @click="getcaptcha">
             <img :src="this.imgUrl" alt="">
           </div>
@@ -15,7 +15,7 @@
           <i>
             <img src="@/assets/code-img.png" alt="">
           </i>
-          <input type="text" :disabled="this.smsdisabled" placeholder="请输入验证码" v-model="smscaptcha" @blur="decideNextStep">
+          <input type="text" :disabled="this.smsdisabled" placeholder="请输入验证码" v-model.trim="smscaptcha" @blur="decideNextStep">
           <div class="remark">
             <div class="btn gray" v-if="pass">点击获取</div>
             <div class="btn pink" v-else v-show="show" @click="getCode">点击获取</div>
@@ -26,7 +26,7 @@
           <i>
             <img src="@/assets/password.png" alt="">
           </i>
-          <input type="password"  placeholder="请设置6-20位字母加数字登录密码" v-model="password" @blur="decideNextStep">
+          <input type="password"  placeholder="请设置6-20位字母加数字登录密码" v-model.trim="password" @blur="decideNextStep">
         </div>
       </div>
       <div class="button gray" v-if="disabled">下一步</div>

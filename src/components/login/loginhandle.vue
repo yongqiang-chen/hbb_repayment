@@ -5,7 +5,7 @@
         <i>
           <img src="@/assets/phone.png" alt="">
         </i>
-        <input type="text" class="phone" placeholder="请输入注册手机号" v-model="phone" oninput="if(value.length>11)value=value.slice(0,11)" @blur="checkhandle">
+        <input type="text" class="phone" placeholder="请输入注册手机号" v-model.trim="phone" oninput="if(value.length>11)value=value.slice(0,11)" @blur="checkhandle">
       </div>
       <div class="button gray" v-if="!show">下一步</div>
       <div class="button pink" v-if="show" @click="provinghandle">下一步</div>

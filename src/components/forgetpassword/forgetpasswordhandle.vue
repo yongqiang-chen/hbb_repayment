@@ -66,7 +66,7 @@ export default {
         const that = this;
         this.$axios.post('http://47.102.119.238:8080/sms/app/getSmsCodeCaptcha?userPhone=' + this.phone + '&captcha=' + this.captcha)
         .then(function (res) {
-          // console.log(res);
+          console.log(res);
           if(res.status == 200){
             const data = res.data;
             if(data.code == "0"){
@@ -107,11 +107,33 @@ export default {
         this.disabled = true;
       }
     },  
+    //找回密码第一步校验验证码接口
     getBackOneHandle(){
-      this.$axios.post('http://47.102.119.238:8080/borrowUser/getBackOne?userPhone=' + this.phone + '&smsCode=' + this.smscaptcha).then(function(res){
+      this.$axios.post('http://47.102.119.238:8080/borrowUser/getBackOne?userPhone=' + this.phone + '&smsCode=' + this.smscaptcha).then((res)=>{
         console.log(res)
+        if(res.status == '200'){
+          const data = res.data;
+          if(data.code == '0'){
+            console.log("校验通过")
+            localStorage.setItem("retrievePasswordPhone", data.result.userPhone);
+            this.$router.push("/retrievepassword");
+          }else if(data.code == "-2"){
+              Toast(data.message);
+              console.log("1");
+            }else if(data.code == "-1"){
+              Toast(data.message);
+              console.log("2");
+            }else{
+              Toast("系统出错，请返回重试");
+              console.log("3");
+            }
+        }else{
+          Toast(res.statusText);
+          console.log("4");
+        }
       }).catch(function(err){
-        Toast(err)
+        Toast(err);
+        console.log("5");
       })
     }
   },

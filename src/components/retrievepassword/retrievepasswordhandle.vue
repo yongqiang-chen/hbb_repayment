@@ -5,19 +5,34 @@
         <i>
           <img src="@/assets/password.png" alt="">
         </i>
-        <input type="password"  placeholder="请设置6-20位字母加数字登录密码">
+        <input type="password"  placeholder="请设置6-20位字母加数字登录密码" v-model.trim="userPassword" @blur="decideNextStep">
       </div>
-      <div class="button">下一步</div>
+      <div class="button gray" v-if="disabled">下一步</div>
+      <div class="button pink" v-else>下一步</div>
     </div>
   </div>
 </template>
 
 <script>
+import { Toast } from 'mint-ui';
 export default {
   name: 'RetrievePasswordHandle',
   data () {
     return {
-      
+      userPassword: '',
+      disabled: true
+    }
+  },
+  props:["userPhone"],
+  methods:{
+    decideNextStep(){
+      if (this.userPassword == "" || !this.userPassword ){
+        Toast('请输入登录密码');
+      }else if((/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/.test(this.userPassword))){
+        Toast('密码符合规范');
+      }else{
+        Toast('密码不符合规范');
+      }
     }
   }
 }
@@ -61,7 +76,6 @@ export default {
         width: 100%;
         height:0.4rem;
         text-align: center;
-        background:rgba(204,204,204,1);
         border-radius:0.04rem;
         margin-top: 0.43rem;
         font-size: 0.16rem;
@@ -69,6 +83,12 @@ export default {
         font-weight:500;
         color:rgba(255,255,255,1);
         line-height: 0.4rem;
+      }
+      .gray{
+        background:rgba(204,204,204,1);
+      }
+      .pink{
+        background:linear-gradient(-90deg,rgba(246,54,118,1),rgba(241,80,132,1));
       }
     }
   }
