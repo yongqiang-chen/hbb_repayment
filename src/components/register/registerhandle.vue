@@ -26,7 +26,7 @@
           <i>
             <img src="@/assets/password.png" alt="">
           </i>
-          <input type="password"  placeholder="请设置6-20位字母加数字登录密码" v-model.trim="password" @blur="decideNextStep">
+          <input type="password"  placeholder="请设置6-20位字母加数字登录密码" v-model.trim="password" @blur="inputpasswordhandle">
         </div>
       </div>
       <div class="button gray" v-if="disabled">下一步</div>
@@ -118,6 +118,14 @@ export default {
         this.disabled = true;
       }
     } ,
+    //输入密码操作后的判断
+    inputpasswordhandle(){
+      if((/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/.test(this.password))){
+        this.decideNextStep();
+      }else{
+        Toast("格式不对，请输入6-20位带有字母和数字的密码")
+      }
+    },
     //注册
     registeredHandle(){
       this.$axios.post('http://47.102.119.238:8080/borrowUser/registered?userPhone=' + this.phone + '&userPassword=' + this.password + '&smsCode=' + this.smscaptcha)
@@ -132,6 +140,7 @@ export default {
                 window.location.href="http://pageinfo.yzyhuababy.com/borrowUser/goDown";
               },2000);
             }else{
+              Toast(data.message);
               console.log(data.message)
             }
           }else{
