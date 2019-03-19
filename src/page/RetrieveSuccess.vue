@@ -11,7 +11,7 @@
         </div>
     </div>
     <p>设置登录密码成功！</p>
-    <div class="confirm">确定</div>
+    <div class="confirm" @click="confirmhandle">确定</div>
   </div>
 </template>
 
@@ -36,6 +36,9 @@ export default {
         } else {
             this.$router.go(-1)
         }
+    },
+    confirmhandle(){
+        this.$router.push("/login");
     }
   }
 }
