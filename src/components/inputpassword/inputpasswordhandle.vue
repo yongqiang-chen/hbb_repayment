@@ -37,6 +37,7 @@ export default {
       }
     },
     loginrequesthandle(){
+       localStorage.setItem('token','');
        this.$axios.post("http://47.102.119.238:8080/borrowUser/login?userPhone="+ this.phone +"&userPassword="+ this.password).then((res)=>{
          console.log(res)
          if(res.status == '200'){
@@ -44,7 +45,10 @@ export default {
            if(data.code == '0'){
              const result = data.result;
              localStorage.setItem('token',result.token);
-             Toast("登录成功")
+             Toast("登录成功");
+             setTimeout(()=>{
+               this.checkBorrowHandle();
+             },300);
            }else{
              Toast(data.message);
            }
@@ -54,6 +58,23 @@ export default {
        })
        this.password = '';
        this.show = false;
+    },
+    checkBorrowHandle(){
+      const token = localStorage.getItem('token');
+      console.log(token);
+      // this.$axios({
+      //   method: 'post',
+      //   headers: {
+      //     "Accept": "*/*",
+      //     "token": token
+      //   },
+      //   url:'http://47.102.119.238:8080/borrowUser/checkBorrow'
+      // }).then((res)=>{
+      //   console.log(res)
+      // }).catch(function(err){
+      //   Toast(err);
+      //   console.log(err);
+      // })
     }
   }
 }
